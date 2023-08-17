@@ -1,17 +1,17 @@
 <h1>Books</h1>
 
-<% @index.each do |index| %>
+<p class="title">Title</p>
 
-  <p>Title</p>
-  <span><%= index.title %></span>
-
-<% end %>
-
+<ul>
+  <% @indexes.each do |index| %>
+    <li><%= index.title %></li>
+  <% end %>
+</ul>
 
 <h1>New book</h1>
 
 <% if @book.errors.any? %>
- <%= @book.errors.count %>件のエラーが発生しました
+ <%= @book.errors.count %>errors prohibited this book from being saved:
  <ul>
    <% @book.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -25,7 +25,7 @@
   <%= f.text_field :title %>
 
   <h4>Body</h4>
-  <%= f.text_field :body %>
+  <%= f.text_area :body %>
 
   <%= f.submit'Create Book'%>
 
