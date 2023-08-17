@@ -1,0 +1,32 @@
+<h1>Books</h1>
+
+<% @index.each do |index| %>
+
+  <p>Title</p>
+  <span><%= index.title %></span>
+
+<% end %>
+
+
+<h1>New book</h1>
+
+<% if @book.errors.any? %>
+ <%= @book.errors.count %>件のエラーが発生しました
+ <ul>
+   <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+ </ul>
+<% end %>
+
+<%= form_with model: @book,url: '/books', method: :post do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Body</h4>
+  <%= f.text_field :body %>
+
+  <%= f.submit'Create Book'%>
+
+<% end %>
