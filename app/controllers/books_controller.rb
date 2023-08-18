@@ -11,7 +11,7 @@ class BooksController < ApplicationController
   
   def index #データの一覧を表示する
    @book = Book.new
-   @indexes = Book.all
+   @index = Book.all
   end
 
   def show #データの内容（詳細）を表示する
@@ -19,9 +19,13 @@ class BooksController < ApplicationController
   end
 
   def edit #データを更新するためのフォームを表示する
+    @book = Book.find(params[:id])
   end
   
   def update #データを更新する
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to book_path(book.id)  
   end
 
   def destroy #データを削除する
