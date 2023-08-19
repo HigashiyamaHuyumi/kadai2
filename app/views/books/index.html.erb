@@ -8,13 +8,13 @@
     </tr>
   </thead>
   <tbody>
-     <% @index.each do |index| %>
+     <% @index.each do |book| %>
       <tr>
-        <td><%= index.title %></td>
-        <td><%= index.body %></td>
-        <td><%= link_to "Show", index, method: :get %></td>
-        <td><%= link_to "Edit", index, method: :get %></td>
-        <td><%= link_to "Destroy", index, method: :delete, "data-confirm" => "Are you sure?" %></td>
+        <td><%= link_to book.title, book_path(book) %></td>
+        <td><%= link_to book.body, book_path(book) %></td>
+        <td><%= link_to "Show", book_path(book) %></td>
+        <td><%= link_to "Edit", edit_book_path(book) %></td>
+        <td><%= link_to "Destroy", book_path(book) , "data-confirm" => "Are you sure?" %></td>
       </tr>
     <% end %>
   </tbody>

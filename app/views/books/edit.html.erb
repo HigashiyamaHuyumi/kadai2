@@ -12,4 +12,7 @@
  
 <% end %>
 
-<p><%= link_to "Show", "/show" %>|<%= link_to "Back", "/books" %></p>
+<p>
+  <%= link_to "Show", book_path(@book) %> |
+  <%= link_to "Back", books_path %>
+</p>
