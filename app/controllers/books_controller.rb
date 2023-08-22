@@ -3,15 +3,17 @@ class BooksController < ApplicationController
   def create #データを追加（保存）する
     @book = Book.new(book_params)
     if @book.save
+     flash[:notice] ="Book was successfully created"
      redirect_to book_path(@book.id)
     else
+     @books = Book.all
      render :index
     end
   end
 
   def index #データの一覧を表示する
    @book = Book.new
-   @index = Book.all
+   @books = Book.all
   end
 
   def show #データの内容（詳細）を表示する
@@ -31,7 +33,7 @@ class BooksController < ApplicationController
   def destroy #データを削除する
     @book = Book.find(params[:id])  # データ（レコード）を1件取得
     @book.destroy  # データ（レコード）を削除
-    redirect_to books_path, notice: 'Book was successfully destroyed.' # 投稿一覧画面へリダイレクト
+    redirect_to "/books", notice: 'Book was successfully destroyed.' # 投稿一覧画面へリダイレクト
   end
 
   private
